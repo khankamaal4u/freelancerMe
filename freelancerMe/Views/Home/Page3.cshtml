@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FreelancerMe.Models.Calculations>
+<partial name="_Notification" />
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">3rd Page</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row">
+            <div class="row">
+                <div class="col-md-12" id="divResult" class="btn btn-info form-control  mx-auto d-block">
+                    <div class="row my-1">
+                        <div class="col-lg-12 col-12 text-end">
+                            <table class="table table-striped" id="tblResults">
+                                <thead>
+                                    <tr>
+                                        <th><span class="text-muted">Page</span></th>
+                                        <th><span class="text-muted">First Number</span></th>
+                                        <th><span class="text-muted">Second Number</span></th>
+                                        <th><span class="text-muted">Sum</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var ordr in Model)
+                                    {
+                                        var sum = ordr.FirstNumber + ordr.SecondNumber;
+                                        <tr>
+                                            <td><h6 class="text-muted">@ordr.PageName</h6></td>
+                                            <td><h6 class="text-muted">@ordr.FirstNumber</h6></td>
+                                            <td><h6 class="text-muted">@ordr.SecondNumber</h6></td>
+                                            <td><h6 class="text-muted">@sum</h6></td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="~/js/order.js"></script>
+}

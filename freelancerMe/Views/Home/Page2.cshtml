@@ -1,0 +1,52 @@
+﻿@model FreelancerMe.Models.Calculations
+<partial name="_Notification" />
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">2nd Page</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row">
+            <div class="row">
+                <input id="hdPageName" hidden asp-for="PageName" value="Page2" />
+                <div class="col-12">
+                    <div class="form-group row py-1 p-3">
+                        <div class="form-floating p-3 col-6">
+                            <input class="form-control" asp-for="FirstNumber" />
+                            <label asp-for="FirstNumber"></label>
+                            <span asp-validation-for="FirstNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating p-3 col-6">
+                            <input class="form-control" asp-for="SecondNumber" />
+                            <label asp-for="SecondNumber"></label>
+                            <span asp-validation-for="SecondNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-6 col-md-3">
+
+                            <button type="submit" class="btn btn-success form-control" asp-action="Order">Calculate <i class="bi bi-calculator"></i></button>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <button asp-action="Page3" asp-controller="Home" class="btn btn-warning form-control">Back to Order List <i class="bi bi-back"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="~/js/order.js"></script>
+}
