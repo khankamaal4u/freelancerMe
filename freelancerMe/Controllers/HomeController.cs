@@ -37,7 +37,42 @@ namespace FreelancerMe.Controllers
                 }
                 else
                 {
-                    var calForThisPage= listCalculation.FirstOrDefault(x => x.PageName == "Page1");
+                    var calForThisPage= listCalculation.FirstOrDefault(x => x.PageName == @Util.Var.Page1);
+                    if (calForThisPage == null)
+                    {
+                        listCalculation.Add(calculations);
+                    }
+                    else
+                    {
+                        calForThisPage.FirstNumber = calculations.FirstNumber;
+                        calForThisPage.SecondNumber = calculations.SecondNumber;
+                    }
+                    HttpContext.Session.Set<List<Calculations>>("calList", listCalculation);
+
+                }
+                TempData["success"] = "Numbers stored in session and can be viewed on the 3rd page";
+            }
+            else
+                TempData["error"] = "Please ensure all validations done.";
+
+            return View(calculations);
+        }
+        [HttpPost]
+        public IActionResult Page2(Calculations calculations)
+        {
+            if (ModelState.IsValid)
+            {
+                var listCalculation = HttpContext.Session.Get<List<Calculations>>("calList");
+
+                if (listCalculation == null)
+                {
+                    var lst = new List<Calculations>();
+                    lst.Add(calculations);
+                    HttpContext.Session.Set<List<Calculations>>("calList", lst);
+                }
+                else
+                {
+                    var calForThisPage = listCalculation.FirstOrDefault(x => x.PageName == @Util.Var.Page2);
                     if (calForThisPage == null)
                     {
                         listCalculation.Add(calculations);

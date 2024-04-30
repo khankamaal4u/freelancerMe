@@ -12,7 +12,7 @@
     <div class="card-body p-4">
         <form method="post" class="row">
             <div class="row">
-                <input id="hdPageName" hidden asp-for="PageName" value="Page2" />
+                <input id="hdPageName" hidden asp-for="PageName" value=@Util.Var.Page2 />
                 <div class="col-12">
                     <div class="form-group row py-1 p-3">
                         <div class="form-floating p-3 col-6">
@@ -29,10 +29,10 @@
                     <div class="row pt-2">
                         <div class="col-6 col-md-3">
 
-                            <button type="submit" class="btn btn-success form-control" asp-action="Order">Calculate <i class="bi bi-calculator"></i></button>
+                            <button type="submit" class="btn btn-success form-control" asp-action="Page2">Calculate <i class="bi bi-calculator"></i></button>
                         </div>
                         <div class="col-6 col-md-3">
-                            <button asp-action="Page3" asp-controller="Home" class="btn btn-warning form-control">Back to Order List <i class="bi bi-back"></i></button>
+                            <button asp-action="Page3" asp-controller="Home" class="btn btn-warning form-control">Go to 3rd Page  <i class="bi bi-back"></i></button>
                         </div>
                     </div>
                 </div>
@@ -50,3 +50,4 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="~/js/order.js"></script>
 }
+
